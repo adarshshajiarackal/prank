@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Access</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #00ff66;
+      font-family: "Courier New", monospace;
+      overflow: hidden;
+    }
+
+    #terminal {
+      padding: 30px;
+      height: 100vh;
+      box-sizing: border-box;
+      font-size: 18px;
+      line-height: 1.7;
+      text-shadow: 0 0 8px #00ff66;
+    }
+
+    .warning {
+      color: #ff3333;
+      font-weight: bold;
+    }
+
+    .success {
+      color: #00ffff;
+    }
+
+    #popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    #popup h1 {
+      color: #ff3333;
+      font-size: 55px;
+      text-shadow: 0 0 20px red;
+    }
+
+    #popup p {
+      color: white;
+      font-size: 22px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="terminal"></div>
+
+<div id="popup">
+  <h1>⚠ ACCESS GRANTED ⚠</h1>
+  <p>Just kidding 😂</p>
+  <p>Your device is completely safe.</p>
+</div>
+
+<script>
+const terminal = document.getElementById("terminal");
+const popup = document.getElementById("popup");
+
+const lines = [
+  "[+] Initializing secure connection...",
+  "[+] Searching for target...",
+  "[+] Target detected: 127.0.0.1",
+  "[+] Scanning open ports...",
+  "[+] Port 22 ........ OPEN",
+  "[+] Port 80 ........ OPEN",
+  "[+] Port 443 ....... OPEN",
+  "[+] Bypassing firewall...",
+  "[+] Encrypting connection...",
+  "[+] Accessing mainframe...",
+  "[+] Downloading secret files...",
+  "[+] ████████████████████ 100%",
+  "",
+  "[!] SYSTEM ACCESS GRANTED!"
+];
+
+let i = 0;
+
+function typeLine() {
+  if (i < lines.length) {
+    const line = document.createElement("div");
+
+    if (line.textContent.includes("[!]")) {
+      line.className = "warning";
+    }
+
+    line.textContent = lines[i];
+    terminal.appendChild(line);
+
+    i++;
+    setTimeout(typeLine, 700);
+  } else {
+    setTimeout(() => {
+      popup.style.display = "flex";
+    }, 1000);
+  }
+}
+
+typeLine();
+</script>
+
+</body>
+</html>
