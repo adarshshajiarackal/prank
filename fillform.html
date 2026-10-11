@@ -62,8 +62,6 @@
 
 <div id="popup">
   <h1>⚠ ACCESS GRANTED ⚠</h1>
-  <p>Just kidding 😂</p>
-  <p>Your device is completely safe.</p>
 </div>
 
 <script>
@@ -71,7 +69,7 @@ const terminal = document.getElementById("terminal");
 const popup = document.getElementById("popup");
 
 const lines = [
-  "[+] Initializing secure connection...",
+  "[+] Initialising secure connection...",
   "[+] Searching for target...",
   "[+] Target detected: 127.0.0.1",
   "[+] Scanning open ports...",
@@ -88,13 +86,15 @@ const lines = [
 ];
 
 let i = 0;
-
+let j = 0;
 function typeLine() {
   if (i < lines.length) {
     const line = document.createElement("div");
 
     if (line.textContent.includes("[!]")) {
-      line.className = "warning";
+      while(j==0){
+        line.className = "warning ‼️";
+      }
     }
 
     line.textContent = lines[i];
